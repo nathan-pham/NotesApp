@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include('./components/seo.html'); %>
+	<%- include('./components/globals.html'); %>
+	<link href="/styles/index.css" rel="stylesheet"/>
+</head>
+<body>
+	<div id="app">
+		<%- include('./components/pages.html', {
+			content: `contenteditable="true"`
+		});%>	
+	</div>
+	<div id="options">
+		<div class="option">
+			Add Page
+		</div>
+		<div class="option">
+			Text to Speech
+		</div>
+		<div class="option">
+			Send HTML
+		</div>
+	</div>
+	<script src="/scripts/index.js" defer></script>
+</body>
+</html>

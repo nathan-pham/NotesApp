@@ -1,0 +1,75 @@
+#app {
+	max-width: 55rem;
+	padding: 0 0.5rem;
+	margin: 0 auto;
+	height: 100%;
+	user-select: none;
+	line-height: 1;
+	font-family: 'Shadows Into Light', cursive;
+	/* font-family: 'Reenie Beanie', cursive; */
+}
+.page {
+	font-size: 1.9rem;
+	margin: 1rem 0;
+	border-radius: 4px;
+	box-shadow: 0 0 0.5em silver;
+	display: flex;
+	flex-wrap: wrap;
+	word-break: break-word;
+	background: #fff;
+}
+.page > * {
+	outline: none;
+}
+.page .questions {
+	flex: 0 1 25%;
+	padding: 0.5rem;
+	border-right: 0.1rem solid gainsboro;
+}
+.page .notes {
+	flex: 0 1 75%;
+	height: 100%;
+	min-height: 100vh;
+	padding: 0.5rem 0 0 0.5rem;
+  	background-image: repeating-linear-gradient(#fff 0, #fff 1.8rem, dodgerblue 1.9rem);
+}
+.page .summary {
+	flex: 0 0 100%;
+	width: 100%;
+	padding: 1rem;
+	background: #fff;
+	border-top: 0.1rem solid gainsboro;
+}
+p {
+	margin: 0;
+}
+#options {
+	position: fixed;
+	left: 0.5rem;
+	bottom: 0.5rem;
+}
+#options .option {
+	margin: 0.5rem;
+	background: whitesmoke;
+	color: grey;
+	cursor: pointer;
+	border-radius: 4px;
+	padding: 0.5rem;
+	font-size: 1.1rem;
+	font-family: Arial, Helvetica, sans-serif;
+	transition: color 0.3s ease,
+				background 0.3s ease;
+}
+#options .option:hover {
+	color: dodgerblue;
+	background: whitesmoke;
+}
+@media print {
+	#options {
+		display: none !important;
+	}
+	#app .page {
+		box-shadow: none;
+		margin: 0 0 1rem 0;
+	}
+}

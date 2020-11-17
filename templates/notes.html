@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include('./components/seo.html'); %>
+	<%- include('./components/globals.html'); %>
+	<link href="/styles/index.css" rel="stylesheet"/>
+</head>
+<body>
+	<div id="app">
+		<%- include('./components/pages.html', {
+			content: ''
+		})%>
+	</div>
+	<script src="https://cdnjs.deepai.org/deepai.min.js"></script>
+	<script>
+		const summaries = document.getElementsByClassName('summary')
+		const fields = document.getElementsByClassName('notes')
+		const strip = (str) => {
+			str = str.toString()
+			return str.replace( /(<([^>]+)>)/ig, '. ').replace(/\*/gi, '')
+		}
+		
+		deepai.setApiKey('df34261a-828f-44b7-9f47-f8ea829581a3')
+
+		;(async () => {
+			for(let i = 0; i < fields.length; i++) {
+				const text = strip(fields[i].innerHTML)
+
+				if(text && !summaries[i].innerHTML) {
+					const summary = await deepai.callStandardApi("summarization", {
+						text
+					})
+					console.log('[Deep AI] Polyfilled summary')
+
+					let filtered = summary.output.toString().split(' ').map(v => v.trim()).filter(v => v.length > 1).join(' ')
+
+					summaries[i].innerHTML = filtered
+				}
+			}
+		})()
+	</script>
+</body>
+</html>
