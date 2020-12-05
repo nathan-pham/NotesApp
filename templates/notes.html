@@ -32,7 +32,7 @@
 					})
 					console.log('[Deep AI] Polyfilled summary')
 
-					let filtered = summary.output.toString().split(' ').map(v => v.trim()).filter(v => v.length > 1).join(' ')
+					let filtered = summary.output.toString().split(' ').map(v => v.trim()).filter(v => v.length > 1).join(' ').split('.').join('').split('\n').map(v => v.trim()).join('\n')
 
 					summaries[i].innerHTML = filtered
 				}

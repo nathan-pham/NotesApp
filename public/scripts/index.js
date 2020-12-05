@@ -53,15 +53,21 @@ const createPage = () => {
 	})
 
 	app.appendChild(page)
+
+	return page
 }
 
-options[0].addEventListener('click', createPage)
+options[0].addEventListener('click', () => {
+	let p = createPage()
+	p.querySelector('.notes').click()
+})
 
 let running = false
 options[1].addEventListener('click', () => {
 	if(!running) {
 		recognition.start()
-		let content = ''
+			// let content = ""
+		
 		recognition.error = e => {
 			console.log(e)
 		}
@@ -71,9 +77,20 @@ options[1].addEventListener('click', () => {
 			let transcript = event.results[current][0].transcript
 
 			const active = document.activeElement
-			content += transcript
-			
-			active.textContent = content
+
+			switch(transcript.trim()) {
+				case "page":
+					option[0].click()
+					break
+				case "period":
+					active.innerHTML += '.'
+					break
+				case "line":
+					active.innerHTML += '\n'
+					break
+				default:
+					active.innerHTML += transcript + " "
+			}
 		}
 		recognition.onend = () => {
 			if(running) {
