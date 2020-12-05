@@ -17,14 +17,14 @@ app.use(express.static('public'))
 
 app.use(cookieSession({
 	name: 'session',
-	keys: [ 'adcharity' ],
+	keys: [ 'nathan' ],
 	sameSite: 'None',
 	maxAge: 24 * 60 * 60 * 1000
 }))
 
 app.get('/', (req, res) => {
 	const { editor } = req.query || {}
-	res.render(`${editor == 'adcharity' ? 'index' : 'notes'}.html`)
+	res.render(`${editor == 'nathan' ? 'index' : 'notes'}.html`)
 })
 
 app.post('/', (req, res) => {
